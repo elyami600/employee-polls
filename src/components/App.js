@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import Question from './Question';
 import Loging from './Login';
 import LeaderBoard from './LeaderBoard';
+import { LoadingBar } from 'react-redux-loading-bar';
 
 
 
@@ -21,7 +22,7 @@ const App = (props) => {
 
   return (
     <Fragment>
-  
+      <LoadingBar/>
       <div className="container">
         <Nav />
         {props.loading === true ? null : (
@@ -42,4 +43,4 @@ const mapStateToProps = ({ authedUser }) => ({
   loading : authedUser === null,
 })
 
-export default connect()(App);
+export default connect(mapStateToProps)(App);
