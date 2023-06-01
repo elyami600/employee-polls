@@ -3,7 +3,7 @@ import Question from "./Question";
 import '../App.css'
 
 const Dashboard = (props) => {
-    console.log("cDashboard props: ", props);
+    console.log("Dashboard props: ", props);
 
     return (
         <div>

@@ -1,43 +1,61 @@
 import { useState } from "react"
 import { connect } from "react-redux"
+import { handleAddQuestionPoll } from "../actions/questions"
+
 
 
 const NewQuestion = (props) => {
     console.log("NewQuestion :" , props)
-    const [inputs, setInputs] = useState({});
+    const [textOptionOne, setTextOptionOne] = useState("");
+    const [textOptionTwo, setTextOptionTwo] = useState("");
+   
+   
 
-    const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs(values => ({...values, [name]: value}))
-  }
+  const handleChangeOptionOne = (e) => {
+    const textOptionOne = e.target.value;
+
+    setTextOptionOne(textOptionOne);
+  };
+
+
+  const handleChangeOptionTwo = (e) => {
+    const textOptionTwo = e.target.value;
+
+    setTextOptionTwo(textOptionTwo);
+  };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setTextOptionOne("")
+        setTextOptionTwo("")
 
     }
     return(
-        <div>
-             <h3>Create a New Poll</h3>
-             <h4>Would you rather...</h4>
+        <div className="center">
+      
+             <h3 className="center">Create a New Poll</h3>
+             <h4 className="center">Would you rather...</h4>
             <form className="create-new-poll" onSubmit={handleSubmit}>
-                <input 
-                 type="text" 
-                 name="optionOne"
-                 value={inputs.optionOne} 
-                 onChange={handleChange}
-                 placeholder="Enter option one.."/>
+                <textarea
+                placeholder="Enter first option..."
+                value={textOptionOne}
+                onChange={handleChangeOptionOne}
+                className="textarea"
+                maxLength={120}
+                />
 
                 <h3>Or</h3>
 
-                <input
-                type="text" 
-                name="optionTwo"
-                value={inputs.optionTwo} 
-                onChange={handleChange}
-                placeholder="Enter option two.."/>
+                <textarea
+                placeholder="Enter second option..."
+                value={textOptionTwo}
+                onChange={handleChangeOptionTwo}
+                className="textarea"
+                maxLength={120}
+                />
 
-                <button className="btn" type="submit" >Submit</button>
+                <button className="btn" type="submit" disabled={textOptionOne === "" || textOptionTwo === ""} > Submit</button>
 
             </form>
         </div>

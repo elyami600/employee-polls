@@ -6,25 +6,3 @@ export function formatDate (timestamp) {
 
  
 
-export function formatQuestion (question, author, authedUser, parentQuestion) {
-    const { id,  text, optionOne,  optionTwo, timestamp } = question
-    const { name, avatarURL } = author
-  
-    return {
-      name,
-      id,
-      timestamp,
-      text,
-      avatar: avatarURL,
-      optionOne: !parentQuestion ? null :{
-        author: parentQuestion.author,
-        id : parentQuestion.id,
-     
-      },
-      optionTwo: !parentQuestion ? null :{
-        author: parentQuestion.author,
-        id : parentQuestion.id,
-      
-      },
-    }
-  }

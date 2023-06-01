@@ -7,14 +7,14 @@ const Question = (props) => {
 
 
 
-   const {avatarURLr, timestamp, id, author , optionOne  ,  optionTwo} = props.question;
+   const {avatarURL, timestamp, id, author , optionOne  ,  optionTwo} = props.question;
 
     return (
         <div className="question">
           <div className="question-info">
 
             <h4>{author}</h4>
-            <img src={props.users.avatarURLr} alt={`Avatar of ${author}`} className="avatar" />
+            <img src={avatarURL} alt={`Avatar of ${author}`} className="avatar" />
             <p>{ formatDate(timestamp)}</p>
             {/* <p>Option one: {optionOne.text}</p>
             <p>votes: {optionOne.votes}</p>
